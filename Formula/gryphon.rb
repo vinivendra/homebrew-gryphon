@@ -1,5 +1,5 @@
 class Gryphon < Formula
-  desc "The Swift to Kotlin translator."
+  desc "The Swift to Kotlin translator"
   homepage "https://vinivendra.github.io/Gryphon/"
   url "https://github.com/vinivendra/Gryphon/archive/v0.7.tar.gz"
   sha256 "0605f925ded3756b9864dd66e43c426ba93acf0bda76f099b223926eb5b7a75f"
@@ -17,7 +17,7 @@ class Gryphon < Formula
   def install
     # Check if Swift's installed
     if `which swift`.empty?
-      odie "Swift not found. Download version 5.1 or 5.2 from "+
+      odie "Swift not found. Download version 5.1 or 5.2 from "\
         "https://swift.org/download/ (or bundled with Xcode 11 or higher)."
     end
 
