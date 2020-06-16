@@ -6,7 +6,6 @@ class Gryphon < Formula
 
   head "https://github.com/vinivendra/Gryphon.git", :branch => "development"
 
-  depends_on :xcode => "11.0" # Xcode 11 is the first to come with Swift 5.1
   depends_on "ruby"
   depends_on "kotlin" => :recommended
 
@@ -16,8 +15,15 @@ class Gryphon < Formula
   end
 
   def install
+    # Check if Swift's installed
+    if `which swift`.empty?
+      odie "Swift not found. Download version 5.1 or 5.2 from "+
+        "https://swift.org/download/ (or bundled with Xcode 11 or higher)."
+    end
+
     # Build the project
     system "swift", "build"
+
     # Copy the built executable to the appropriate location
     bin.install ".build/debug/gryphon"
   end
