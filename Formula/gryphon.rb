@@ -15,6 +15,24 @@ class Gryphon < Formula
   end
 
   def install
+    # Install gems to libexec/vendor
+    resources.each do |r|
+      r.verify_download_integrity(r.fetch)
+      system("gem", "install", "--install-dir", "#{libexec}/vendor", r.cached_download, "--no-document")
+    end
+
+    # Change the contents of the RubyScriptContents.swift file to
+    # include the correct path
+    contents = %{
+      internal let rubyScriptFileContents = """
+      #!/bin/bash
+      export GEM_HOME="#{libexec}/vendor"
+      exec ruby "$@"
+      """
+    }
+
+    File.write("Sources/GryphonLib/RubyScriptContents.swift", contents)
+
     # Check if Swift's installed
     if `which swift`.empty?
       odie "Swift not found. Download version 5.1 or 5.2 from "\
