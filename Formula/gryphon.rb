@@ -23,13 +23,13 @@ class Gryphon < Formula
 
     # Change the contents of the RubyScriptContents.swift file to
     # include the correct path
-    contents = %{
+    contents = %Q(
       internal let rubyScriptFileContents = """
       #!/bin/bash
       export GEM_HOME="#{libexec}/vendor"
       exec ruby "$@"
       """
-    }
+    )
 
     File.write("Sources/GryphonLib/RubyScriptContents.swift", contents)
 
