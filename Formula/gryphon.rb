@@ -40,7 +40,7 @@ class Gryphon < Formula
     end
 
     # Build the project
-    system "swift", "build"
+    system "swift", "build", "--disable-sandbox"
 
     # Copy the built executable to the appropriate location
     bin.install ".build/debug/gryphon"
