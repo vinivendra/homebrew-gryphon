@@ -2,7 +2,7 @@ class Gryphon < Formula
   desc "The Swift to Kotlin translator"
   homepage "https://vinivendra.github.io/Gryphon/"
   url "https://github.com/vinivendra/Gryphon/archive/v0.16.tar.gz"
-  sha256 "7109069ba1f73f524add89c6b1812b73ba41a30d0d8ad37de206b54f8d4773ae"
+  sha256 "8aba2276a9b43d4a74330b8b6c9f17f3b5ec382caf3196a9f3be16973fb68e49"
 
   head "https://github.com/vinivendra/Gryphon.git", :branch => "development"
 
